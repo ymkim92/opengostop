@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/opengostop/!svn/ver/9/trunk/test/play_cmd
+END
+tt.sh
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/opengostop/!svn/ver/9/trunk/test/play_cmd/tt.sh
+END
+Your_turn.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/opengostop/!svn/ver/10/trunk/test/play_cmd/Your_turn.py
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/opengostop/!svn/ver/5/trunk/test
+END
+test02.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/opengostop/!svn/ver/4/trunk/test/test02.py
+END
+test01.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/opengostop/!svn/ver/3/trunk/test/test01.py
+END
+tt2.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/opengostop/!svn/ver/3/trunk/test/tt2.py
+END
+pick_sucess.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/opengostop/!svn/ver/6/trunk/test/pick_sucess.py
+END
+play_syntax_success.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/opengostop/!svn/ver/8/trunk/test/play_syntax_success.py
+END
+tt1.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/opengostop/!svn/ver/3/trunk/test/tt1.py
+END
+tt.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/opengostop/!svn/ver/10/trunk/test/tt.py
+END
+3rd_pick_out_of_range.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/opengostop/!svn/ver/6/trunk/test/3rd_pick_out_of_range.py
+END

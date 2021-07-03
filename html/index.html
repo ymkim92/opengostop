@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<title>
+    Open Go Stop
+</title>
+
+<body>
+    <img src="gostop.png" id="image" />
+
+    <script>
+        var newImage = new Image();
+        newImage.src = "gostop.png";
+
+        updateImage();
+        function updateImage() {
+            // console.log("hello");
+            if (newImage.complete) {
+                document.getElementById("image").src = newImage.src;
+                newImage = new Image();
+                newImage.src = "gostop.png?" + new Date().getTime();
+            }
+
+            setTimeout(updateImage, 1000);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -23,6 +23,11 @@ NM: name (key)
 users[name] = [play_order, conn, [], [], 0, 100000, False, -1, '0']
 '''
 
+class User:
+    def __init__(self, name):
+        self.name = name
+
+        
 log_format = '{%(pathname)s:%(lineno)d} %(levelname)s:%(message)s'
 logging.basicConfig(format=log_format, level=logging.DEBUG)
 

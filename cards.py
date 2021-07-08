@@ -1,3 +1,14 @@
+class Card:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+class GoStopCard(Card):
+    def __init__(self, x, y, point):
+        super.__init__(x, y)
+        self.point = point
+
+
 gscards_dict = {'1A':['GW', 0],
 				'1B':['TT', 1],
 				'1C':['PI', 0],

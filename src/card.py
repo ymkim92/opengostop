@@ -5,6 +5,13 @@ class Card:
         self.x = x
         self.y = y
 
+    def __init__(self, card_tuple):
+        self.x = card_tuple[0]
+        self.y = card_tuple[1]
+
+    def __str__(self):
+        return f'{self.x:x}{self.y}'
+
 class Cards:
 
     card_set = (

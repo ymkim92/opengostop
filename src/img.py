@@ -58,4 +58,12 @@ if __name__ == "__main__":
     for i in range(8):
         for j in range(6):
             card_image = get_card(i, j)
-            card_image.save(f"images/{i}{j}.png")
+            if i>3:
+                increment = 1
+            else:
+                increment = 0
+
+            month = j*2 + increment
+            index = i-4 if increment else i
+            card_image.save(f"images/{month:x}{index}.png")
+            print(f'{month:x} {index}')

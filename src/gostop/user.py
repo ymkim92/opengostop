@@ -1,8 +1,7 @@
 class User:
-    def __init__(self, id, h, m):
+    def __init__(self, id, h):
         self.id = id
         self.cards_in_hand = h
-        self.money = m
         self.cards_earned = []
 
     def select_card(self, cards, index):

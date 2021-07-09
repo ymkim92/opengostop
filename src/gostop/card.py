@@ -66,7 +66,6 @@ class Cards:
         return self.available_cards[key]
 
 class GameCards(Cards):
-
     def __init__(self):
         super().__init__()
         for i in range(len(self.card_set)):

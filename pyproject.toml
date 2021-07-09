@@ -5,6 +5,10 @@ description = ""
 authors = ["Youngmin Kim <ymkim92@gmail.com>"]
 license = "MIT"
 
+packages = [
+    { include = "src" },
+]
+
 [tool.poetry.dependencies]
 python = "^3.7"
 

@@ -5,16 +5,21 @@ class Card:
         self.x = x
         self.y = y
 
-    def __init__(self, card_tuple):
-        self.x = card_tuple[0]
-        self.y = card_tuple[1]
-
     def __str__(self):
         return f'{self.x:x}{self.y}'
 
 class Cards:
 
     card_set = (
+        (0, 1, 3, 3),
+        (0, 1, 2, 3),
+        (0, 1, 2, 3),
+        (0, 1, 3, 3),
+        (0, 1, 2, 3),
+        (0, 1, 2, 3),
+        (0, 1, 3, 3),
+        (0, 1, 2, 3),
+        (0, 1, 2, 3),
         (0, 1, 3, 3),
         (0, 1, 2, 3),
         (0, 1, 2, 3),
@@ -65,3 +70,5 @@ if __name__ == '__main__':
     print(gs_cards.get_card_in_random())
     print(gs_cards.available_cards)
     print(gs_cards)
+
+    card = Card(1,2)

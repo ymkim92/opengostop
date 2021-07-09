@@ -1,13 +1,9 @@
 [tool.poetry]
-name = "opengostop"
+name = "gostop"
 version = "0.1.0"
 description = ""
 authors = ["Youngmin Kim <ymkim92@gmail.com>"]
 license = "MIT"
-
-packages = [
-    { include = "src" },
-]
 
 [tool.poetry.dependencies]
 python = "^3.7"

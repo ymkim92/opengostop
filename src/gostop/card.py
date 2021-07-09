@@ -42,8 +42,19 @@ class Cards:
             return False
 
     def get_card_in_random(self):
+        if len(self)==0:
+            return None
         i = random.randint(0, len(self)-1)
         return self.available_cards.pop(i)
+
+    def get_cards_in_random(self, n):
+        if len(self) < n:
+            return None
+        ret = []
+        for _ in range(n):
+            ret.append(self.get_card_in_random())
+        
+        return ret
 
     def __str__(self):
         return str(self.available_cards)
@@ -51,24 +62,19 @@ class Cards:
     def __len__(self):
         return len(self.available_cards)
 
+    def __getitem__(self, key):
+        return self.available_cards[key]
+
 class GameCards(Cards):
 
     def __init__(self):
         super().__init__()
-        for i in range(len(self.card_set[0])):
-            for j in range(len(self.card_set)):
+        for i in range(len(self.card_set)):
+            for j in range(len(self.card_set[0])):
                 self.available_cards.append((i, j))
 
 if __name__ == '__main__':
     gs_cards = GameCards()
-    print(gs_cards.get_total_number_of_cards())
-    print(len(gs_cards))
-    print(gs_cards.available_cards)
-    print(gs_cards.get_card(0,1))
-    print(gs_cards.available_cards)
-    print(gs_cards.get_card_in_random())
-    print(gs_cards.get_card_in_random())
-    print(gs_cards.available_cards)
     print(gs_cards)
-
-    card = Card(1,2)
+    print(gs_cards.get_cards_in_random(5))
+    print(gs_cards)

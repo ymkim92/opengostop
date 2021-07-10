@@ -2,8 +2,8 @@ import card
 import user
 
 INIT_MONEY = 1000
-INIT_NUM_USER_CARDS = 8
-INIT_NUM_BADAK_CARDS = 6
+INIT_NUM_USER_CARDS = 10
+INIT_NUM_BADAK_CARDS = 8
 NUM_USERS = 2
 
 class GsGame:
@@ -17,7 +17,11 @@ class GsGame:
             self.gs_users.append(user.User(i, user_cards))
 
     def start(self):
-        pass
+        winner = -1
+        while True:
+            self.gs_users[self.current_player].select_card()
+        
+        return winner
 
 def gostop(num_users, play_order_list, money_list):
     while True:

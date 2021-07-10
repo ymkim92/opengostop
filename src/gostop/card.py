@@ -8,21 +8,27 @@ class Card:
     def __str__(self):
         return f'{self.x:x}{self.y}'
 
+CARD_KW = CARD_KWANG = 0        # 광    3 cards = 3 points
+CARD_YK = CARD_YEOLKKEUS = 1    # 열끗  6 cards = 1 point
+CARD_TI = CARD_TTI = 2          # 띠    6 cards = 1 point
+CARD_PI = 3                     # 피    10 cards = 1 point
+CARD_SP = CARD_SSANGPI = 4      # 쌍피 
+
 class Cards:
 
     card_set = (
-        (0, 1, 3, 3),
-        (0, 1, 2, 3),
-        (0, 1, 2, 3),
-        (0, 1, 3, 3),
-        (0, 1, 2, 3),
-        (0, 1, 2, 3),
-        (0, 1, 3, 3),
-        (0, 1, 2, 3),
-        (0, 1, 2, 3),
-        (0, 1, 3, 3),
-        (0, 1, 2, 3),
-        (0, 1, 2, 3),
+        (CARD_KW, CARD_TI, CARD_PI, CARD_PI),
+        (CARD_YK, CARD_TI, CARD_PI, CARD_PI),
+        (CARD_KW, CARD_TI, CARD_PI, CARD_PI),
+        (CARD_YK, CARD_TI, CARD_PI, CARD_PI),
+        (CARD_YK, CARD_TI, CARD_PI, CARD_PI),
+        (CARD_YK, CARD_TI, CARD_PI, CARD_PI),
+        (CARD_YK, CARD_TI, CARD_PI, CARD_PI),
+        (CARD_KW, CARD_YK, CARD_PI, CARD_PI),
+        (CARD_YK, CARD_TI, CARD_PI, CARD_PI),
+        (CARD_YK, CARD_TI, CARD_PI, CARD_PI),
+        (CARD_KW, CARD_SP, CARD_PI, CARD_PI),
+        (CARD_KW, CARD_YK, CARD_TI, CARD_SP),
     )     
 
     def __init__(self):

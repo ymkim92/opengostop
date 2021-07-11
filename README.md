@@ -3,6 +3,5 @@
 Go-Stop Game : Korean Tradition Card Game
 
 ## TODO
-- Study python OOP
-- Build a web page to show cards
+- Diplay a game image in web page
 - ~~crop empty edges from the card~~

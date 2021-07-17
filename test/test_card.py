@@ -24,3 +24,14 @@ def test_gscard_init():
     assert(len(ret) == 40)
     ret = gs_cards.get_cards_in_random(6)
     assert(ret == None)
+
+def test_gscard_add():
+    gs_cards = GameCards()
+    ret = gs_cards.add_card(1,2)
+    assert(ret==False)
+    ret = gs_cards.get_card(1,2)
+    assert(ret==True)
+    assert(len(gs_cards) == 47)
+    ret = gs_cards.add_card(1,2)
+    assert(ret==True)
+    assert(len(gs_cards) == 48)

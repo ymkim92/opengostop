@@ -6,11 +6,11 @@ authors = ["Youngmin Kim <ymkim92@gmail.com>"]
 license = "MIT"
 
 packages = [
-    { include = "src/html" },
+    { include = "src/gostop" },
 ]
 
 [tool.poetry.scripts]
-gen_image = "src.html.build_a_image:build_image"
+gen_image = "src.gostop.build_a_image:build_image"
 
 [tool.poetry.dependencies]
 python = "^3.7"

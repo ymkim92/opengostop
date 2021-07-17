@@ -15,6 +15,8 @@ def get_concat_h(im1, im2, overlap_percent):
 @click.option('-d', '--dst')
 @click.option('-o', '--overlap', default=0)
 def build_image(src, dst, overlap):
+    """ ex) # python build_a_image.py images/11.png images/43.png images/a3.png -o 50 -d gostop.png
+    """
     images = []
     for i in src:
         images.append(Image.open(i))

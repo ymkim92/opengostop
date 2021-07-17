@@ -1,4 +1,9 @@
 import random
+import logging
+from PIL import Image
+from build_a_image import get_concat_h
+
+logging.basicConfig(level=logging.INFO)
 
 class Card:
     def __init__(self, x, y):
@@ -40,6 +45,14 @@ class Cards:
     def get_total_number_of_cards(self):
         return sum(len(items) for items in self.card_set)
  
+    def add_card(self, x, y):
+        if (x, y) in self.available_cards:
+            logging.error(f"Card ({x:x}, {y}) is in card set already")
+            return False
+        else:
+            self.available_cards.append((x, y))
+            return True
+
     def get_card(self, x, y):
         if (x, y) in self.available_cards:
             self.available_cards.remove((x, y))
@@ -61,6 +74,17 @@ class Cards:
             ret.append(self.get_card_in_random())
         
         return ret
+    
+    def create_image(self, image_name="../html/gostop.png"):
+        images = []
+        for x, y in self.available_cards:
+            images.append(Image.open(f"images/{x:x}{y}.png"))
+        
+        dst_image = images.pop(0)
+        for i in images:
+            dst_image = get_concat_h(dst_image, i, 50)
+
+        dst_image.save(image_name)
 
     def __str__(self):
         return str(self.available_cards)
@@ -79,7 +103,7 @@ class GameCards(Cards):
                 self.available_cards.append((i, j))
 
 if __name__ == '__main__':
-    gs_cards = GameCards()
-    print(gs_cards)
-    print(gs_cards.get_cards_in_random(5))
-    print(gs_cards)
+    cards = Cards()
+    cards.add_card(1,2)
+    cards.add_card(10,0)
+    cards.create_image()

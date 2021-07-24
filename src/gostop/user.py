@@ -1,7 +1,7 @@
 from card import Cards
 
 class User:
-    def __init__(self, id, h):
+    def __init__(self, id:int, h:Cards):
         self.id = id
         self.cards_in_hand = h
         self.cards_earned = Cards()

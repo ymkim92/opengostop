@@ -19,7 +19,7 @@ CARD_TI = CARD_TTI = 2          # 띠    6 cards = 1 point
 CARD_PI = 3                     # 피    10 cards = 1 point
 CARD_SP = CARD_SSANGPI = 4      # 쌍피 
 
-class Cards:
+class Cards(list):
 
     card_set = (
         (CARD_KW, CARD_TI, CARD_PI, CARD_PI),
@@ -36,8 +36,27 @@ class Cards:
         (CARD_KW, CARD_YK, CARD_TI, CARD_SP),
     )     
 
-    def __init__(self):
-        self.available_cards = []
+    def __init__(self, l = []):
+        self.check_cards_valid(l)
+        super().__init__(l)
+
+    def check_cards_valid(self, l):
+        for i in l:
+            if type(i) is not tuple:
+                raise ValueError(l)
+
+            self.check_card_valid(i)
+
+    def check_card_valid(self, t):
+        if len(t) != 2:
+            raise ValueError(t)
+        for i in range(2):
+            if type(t[i]) is not int:
+                raise ValueError(t) 
+        if t[0] < 0 or t[0] > 11:
+            raise ValueError(t)
+        if t[1] < 0 or t[1] > 3:
+            raise ValueError(t)
 
     def get_card_type(self, x, y):
         return self.card_set(x, y)
@@ -45,17 +64,18 @@ class Cards:
     def get_total_number_of_cards(self):
         return sum(len(items) for items in self.card_set)
  
-    def add_card(self, x, y):
-        if (x, y) in self.available_cards:
-            logging.error(f"Card ({x:x}, {y}) is in card set already")
+    def add_card(self, a_card):
+        self.check_card_valid(a_card)
+        if a_card in self:
+            logging.error(f"Card {a_card}) is in card set already")
             return False
         else:
-            self.available_cards.append((x, y))
+            self.append(a_card)
             return True
 
-    def get_card(self, x, y):
-        if (x, y) in self.available_cards:
-            self.available_cards.remove((x, y))
+    def get_card(self, a_card):
+        if a_card in self:
+            self.remove(a_card)
             return True
         else:
             return False
@@ -64,20 +84,20 @@ class Cards:
         if len(self)==0:
             return None
         i = random.randint(0, len(self)-1)
-        return self.available_cards.pop(i)
+        return self.pop(i)
 
     def get_cards_in_random(self, n):
         if len(self) < n:
             return None
-        ret = []
+        ret = Cards()
         for _ in range(n):
-            ret.append(self.get_card_in_random())
+            ret.add_card(self.get_card_in_random())
         
         return ret
     
     def create_image(self, image_name="../html/gostop.png", number=False, overlap=50):
         images = []
-        for i, (x, y) in enumerate(self.available_cards):
+        for i, (x, y) in enumerate(self):
             img = Image.open(f"images/{x:x}{y}.png")
             if number:
                 img = add_number(img, i) 
@@ -89,32 +109,20 @@ class Cards:
 
         dst_image.save(image_name)
 
-    def __str__(self):
-        return str(self.available_cards)
-    
-    def __len__(self):
-        return len(self.available_cards)
-
-    def __getitem__(self, key):
-        return self.available_cards[key]
 
 class GameCards(Cards):
     def __init__(self):
         super().__init__()
         for i in range(len(self.card_set)):
             for j in range(len(self.card_set[0])):
-                self.available_cards.append((i, j))
+                self.add_card((i, j))
 
-class UserCards(Cards):
-    def __init__(self, card_list):
-        super().__init__()
-        self.available_cards.extend(card_list)
 
 if __name__ == '__main__':
     cards = Cards()
-    cards.add_card(1,2)
-    cards.add_card(10,0)
-    cards.add_card(10,1)
-    cards.add_card(10,2)
+    cards.add_card((1,2))
+    cards.add_card((10,0))
+    cards.add_card((10,1))
+    cards.add_card((10,2))
     cards.create_image()
     cards.create_image(image_name="../html/badak.png", number=True, overlap=0)

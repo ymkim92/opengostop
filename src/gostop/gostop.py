@@ -29,8 +29,7 @@ def gostop(num_users, play_order_list, money_list):
         gs_cards = card.GameCards()
         gs_game = GsGame(NUM_USERS, gs_cards, INIT_NUM_USER_CARDS, INIT_NUM_BADAK_CARDS, play_order_list)
         # TODO 
-        # Cards vs card_list??
-        
+        # - show the users cards in hand
         # - create cards for game
         # - check if any card set has all 4 set cards.
         #   - First user wins if badak has 4 cards or both users have 4 cards

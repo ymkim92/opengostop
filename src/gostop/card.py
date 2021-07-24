@@ -1,7 +1,7 @@
 import random
 import logging
 from PIL import Image
-from build_a_image import get_concat_h
+from build_a_image import get_concat_h, add_number
 
 logging.basicConfig(level=logging.INFO)
 
@@ -75,14 +75,17 @@ class Cards:
         
         return ret
     
-    def create_image(self, image_name="../html/gostop.png"):
+    def create_image(self, image_name="../html/gostop.png", number=False, overlap=50):
         images = []
-        for x, y in self.available_cards:
-            images.append(Image.open(f"images/{x:x}{y}.png"))
+        for i, (x, y) in enumerate(self.available_cards):
+            img = Image.open(f"images/{x:x}{y}.png")
+            if number:
+                img = add_number(img, i) 
+            images.append(img)
         
         dst_image = images.pop(0)
         for i in images:
-            dst_image = get_concat_h(dst_image, i, 50)
+            dst_image = get_concat_h(dst_image, i, overlap)
 
         dst_image.save(image_name)
 
@@ -102,8 +105,16 @@ class GameCards(Cards):
             for j in range(len(self.card_set[0])):
                 self.available_cards.append((i, j))
 
+class UserCards(Cards):
+    def __init__(self, card_list):
+        super().__init__()
+        self.available_cards.extend(card_list)
+
 if __name__ == '__main__':
     cards = Cards()
     cards.add_card(1,2)
     cards.add_card(10,0)
+    cards.add_card(10,1)
+    cards.add_card(10,2)
     cards.create_image()
+    cards.create_image(image_name="../html/badak.png", number=True, overlap=0)

@@ -19,7 +19,8 @@ class GsGame:
     def start(self):
         winner = -1
         while True:
-            self.gs_users[self.current_player].select_card()
+            pass
+            # self.gs_users[self.current_player].select_card()
         
         return winner
 
@@ -27,11 +28,18 @@ def gostop(num_users, play_order_list, money_list):
     while True:
         gs_cards = card.GameCards()
         gs_game = GsGame(NUM_USERS, gs_cards, INIT_NUM_USER_CARDS, INIT_NUM_BADAK_CARDS, play_order_list)
-        gs_game.start()
-        print(gs_game.badak_cards)
+        # TODO 
+        # Cards vs card_list??
+        
+        # - create cards for game
+        # - check if any card set has all 4 set cards.
+        #   - First user wins if badak has 4 cards or both users have 4 cards
+        #   - user wins if the user has 4 cards
+        print(len(gs_game.badak_cards))
         print(sorted(gs_game.badak_cards))
         print(gs_cards)
         print(len(gs_cards))
+        # gs_game.start()
         break
 
 if __name__ == '__main__':
@@ -39,4 +47,4 @@ if __name__ == '__main__':
     for i in range(NUM_USERS):
         play_order_list.append(i)
 
-    gostop(NUM_USERS, play_order_list, [INIT_MONEY, INIT_MONEY])
+    gostop(NUM_USERS, play_order_list, [INIT_MONEY]*NUM_USERS)

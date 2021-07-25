@@ -5,6 +5,24 @@ from build_a_image import get_concat_h, add_number
 
 logging.basicConfig(level=logging.INFO)
 
+def create_image(card_list, image_name="../html/gostop.png", number=False, overlap=50):
+    images = []
+    for i, (x, y) in enumerate(card_list):
+        img = Image.open(f"images/{x:x}{y}.png")
+        if number:
+            img = add_number(img, i) 
+        images.append(img)
+    
+    if len(images) == 0:
+        logging.warning("Empty image")
+        dst_image = Image.new('RGB', (1,1))
+    else:
+        dst_image = images.pop(0)
+        for i in images:
+            dst_image = get_concat_h(dst_image, i, overlap)
+
+    dst_image.save(image_name)
+
 class Card:
     def __init__(self, x, y):
         self.x = x
@@ -94,21 +112,6 @@ class Cards(list):
             ret.add_card(self.get_card_in_random())
         
         return ret
-    
-    def create_image(self, image_name="../html/gostop.png", number=False, overlap=50):
-        images = []
-        for i, (x, y) in enumerate(self):
-            img = Image.open(f"images/{x:x}{y}.png")
-            if number:
-                img = add_number(img, i) 
-            images.append(img)
-        
-        dst_image = images.pop(0)
-        for i in images:
-            dst_image = get_concat_h(dst_image, i, overlap)
-
-        dst_image.save(image_name)
-
 
 class GameCards(Cards):
     def __init__(self):
@@ -124,5 +127,5 @@ if __name__ == '__main__':
     cards.add_card((10,0))
     cards.add_card((10,1))
     cards.add_card((10,2))
-    cards.create_image()
-    cards.create_image(image_name="../html/badak.png", number=True, overlap=0)
+    create_image(cards)
+    create_image(cards, image_name="../html/badak.png", number=True, overlap=0)

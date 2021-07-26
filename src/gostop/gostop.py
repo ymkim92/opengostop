@@ -1,4 +1,5 @@
 from card import create_image, GameCards
+import rule
 import user
 
 INIT_MONEY = 1000
@@ -18,6 +19,12 @@ class GsGame:
 
     def start(self):
         winner = -1
+        self.current_player = self.get_first_player()
+        for _ in range(NUM_USERS):
+            player = self.get_next_player()
+            if rule.check_4cards(player.cards_in_hand) >= 0:
+                player.score = 7
+                
         while True:
             pass
             # self.gs_users[self.current_player].select_card()
@@ -29,9 +36,9 @@ class GsGame:
         return 0
 
     def get_next_player(self):
-        ret = self.current_player
+        i = self.current_player
         self.current_player += 1
-        return ret
+        return self.gs_users[i]
 
 def gostop(num_users, play_order_list, money_list):
     gs_id = 0
@@ -40,8 +47,6 @@ def gostop(num_users, play_order_list, money_list):
         gs_game = GsGame(NUM_USERS, gs_cards, INIT_NUM_USER_CARDS, INIT_NUM_BADAK_CARDS, play_order_list)
         # TODO 
         # - check if any card set has all 4 set cards.
-        #   - First user wins if badak has 4 cards or both users have 4 cards
-        #   - user wins if the user has 4 cards
         # - money_list
 
         print(len(gs_cards))
@@ -53,7 +58,7 @@ def gostop(num_users, play_order_list, money_list):
             create_image(sorted(gs_game.gs_users[i].cards_earned), 
                 image_name=f"../html/cards_earned{i}.png", number=True, overlap=0)
 
-        # gs_game.start()
+        gs_game.start()
         break
 
 if __name__ == '__main__':

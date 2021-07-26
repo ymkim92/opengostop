@@ -5,6 +5,7 @@ class User:
         self.id = id
         self.cards_in_hand = h
         self.cards_earned = Cards()
+        self.score = 0
 
     def select_card(self, cards, index):
         pass

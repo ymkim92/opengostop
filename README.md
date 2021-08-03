@@ -2,6 +2,9 @@
 
 Go-Stop Game : Korean Tradition Card Game
 
-## TODO
-- Diplay a game image in web page
-- ~~crop empty edges from the card~~
+## poetry
+```
+poetry add cmd2
+poetry update cmd2
+poetry install
+``` 

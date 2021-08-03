@@ -4,9 +4,13 @@
 def check_4cards(a_card_list):
     cnt = 0
     hash_list = [0]*12
+    ret = []
     for x, y in a_card_list:
         hash_list[x] += 1
         if hash_list[x] == 4:
-            return x
+            ret.append(x)
 
-    return -1
+    return ret
+
+def decide_go_stop(user):
+    pass

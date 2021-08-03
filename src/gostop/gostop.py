@@ -25,11 +25,14 @@ class GsGame:
 
     def start(self):
         winner = -1
-        self.current_player = self.get_first_player()
+        self.current_player = self.get_first_player_number()
         for _ in range(NUM_USERS):
             player = self.get_next_player()
-            if rule.check_4cards(player.cards_in_hand) >= 0:
-                player.score = 7
+            num_of_4cards = len(rule.check_4cards(player.cards_in_hand))
+            player.score = 7*num_of_4cards
+            if num_of_4cards > 0:
+                rule.decide_go_stop(player)
+
                 
         while True:
             # TODO add cmd2 console here
@@ -38,7 +41,7 @@ class GsGame:
         
         return winner
 
-    def get_first_player(self):
+    def get_first_player_number(self):
         # TODO: replace 0 to winner
         return 0
 

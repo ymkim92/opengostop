@@ -15,7 +15,7 @@ gen_image = "src.gostop.build_a_image:build_image"
 [tool.poetry.dependencies]
 python = "^3.7"
 click = "^8.0.1"
-Pillow = "^8.3.1"
+Pillow = "^9.0.0"
 cmd2 = "^2.1.0"
 
 [tool.poetry.dev-dependencies]
